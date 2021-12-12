@@ -62,8 +62,6 @@ const person = {
 const { firstname, name} = person;
 console.log(firstname, name);
 
-*/
-
 import { Person } from './classes/Person'
 
 class Teacher extends Person {
@@ -79,3 +77,5 @@ class Teacher extends Person {
 
 const t1 = new Teacher("Simon", "Martin", "Nothing lol");
 t1.Teah();
+
+*/
