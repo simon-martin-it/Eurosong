@@ -90,6 +90,36 @@
           }
           return vote;
         });
+        this.PostVote(points);
+        let activeVotes = votes.filter((vote) => vote.voted == true);
+
+        //everything is voted, redirect to ranking
+        if(activeVotes.length == votes.length){
+          this.GoToPage("ranking");
+        }
+
+      },
+      PostVote(points){
+        const songId = this.songs[this.ActiveSongIndex].id
+        const url = "http://webservies.be/eurosong/votes"
+        
+        fetch(url, {
+          method: "POST",
+          headers: {
+            'Accept': "application/json, text/plain",
+            'Content-Type': 'application/json;charset=UTF-8'
+          },
+          body: JSON.stringify({
+            songID: songId,
+            points: points
+          })
+        })
+        .then((response) => {
+          return response.json();
+        })
+        .then((result) => {
+          console.log(result);
+        })
       }
     }
   }

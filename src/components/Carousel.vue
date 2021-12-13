@@ -4,7 +4,7 @@
         <button @click="ChangeIndex(1)">Next</button>
         <div v-for="(song, index) in songs" :key="song.id">
             <div v-if="index == activeindex">
-                {{song.artist.name}} - {{song.title}}
+                <iframe :src="song.spotify" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
             </div>
         </div>
     </div>
