@@ -6,7 +6,6 @@
     <div v-for="(vote, index) in votes" :key="index">
       <button @click="Vote(vote.points)" v-if="!vote.voted">
         Add {{vote.points}} Points
-        {{ vote.voted }}
       </button>
     </div>
     <button @click="GoToPage('home')">Show Home</button>
@@ -124,7 +123,3 @@
     }
   }
 </script>
-
-<style scoped lang="scss">
-
-</style>

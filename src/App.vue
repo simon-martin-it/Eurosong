@@ -27,7 +27,7 @@
     },
     data(){
       return {
-        page: "game"
+        page: "home"
       }
     },
     methods: {
@@ -44,6 +44,5 @@
   color: #2c3e50;
   margin: 1rem;
   text-align: center;
-  background-color: chartreuse;
 }
 </style>
