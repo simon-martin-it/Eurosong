@@ -1,14 +1,16 @@
 <template>
-  <div>
+  <div id="game">
     <h2>Game</h2>
     <Carousel :songs="songs" :activeindex="ActiveSongIndex" @change-index="ChangeActiveSong" />
 
-    <div v-for="(vote, index) in votes" :key="index">
+    <div id="votebutton" v-for="(vote, index) in votes" :key="index">
       <button @click="Vote(vote.points)" v-if="!vote.voted">
         Add {{vote.points}} Points
       </button>
     </div>
-    <button @click="GoToPage('home')">Show Home</button>
+    <div id="gohomebutton">
+      <button @click="GoToPage('home')">Show Home</button>
+    </div>
   </div>
 </template>
 
@@ -123,3 +125,14 @@
     }
   }
 </script>
+
+<style lang="scss">
+  #votebutton {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+
+  #gohomebutton {
+    width: 100%;
+  }
+</style>

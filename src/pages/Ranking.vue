@@ -1,6 +1,9 @@
 <template>
-    <div>
-      <h2>Ranking</h2>
+    <div id="ranking">
+      <h1>RANKING</h1>
+      <div id="content">
+          
+      </div>
       <button @click="GoToPage('home')">Show Home</button>
     </div>
 </template>
