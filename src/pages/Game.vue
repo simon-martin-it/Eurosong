@@ -2,7 +2,6 @@
   <div id="game">
     <h2>Game</h2>
     <Carousel :songs="songs" :activeindex="ActiveSongIndex" @change-index="ChangeActiveSong" />
-
     <div id="votebutton" v-for="(vote, index) in votes" :key="index">
       <button @click="Vote(vote.points)" v-if="!vote.voted">
         Add {{vote.points}} Points
@@ -22,7 +21,6 @@
     components: {
       Carousel
     },
-
     data(){
       return{
         songs: [],

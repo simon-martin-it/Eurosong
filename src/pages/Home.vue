@@ -13,6 +13,9 @@
             GoToPage(page){
                 this.$emit("change-page", page)
             }
+        },
+        mounted(){
+            console.log("mounted home");
         }
     }
 </script>

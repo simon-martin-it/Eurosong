@@ -60,7 +60,7 @@ button {
 }
 
 button:hover {
-  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.2);
 }
 
 img {
@@ -72,8 +72,9 @@ img {
   font-size: 150%;
   color: #2c3e50;
   text-align: center;
-  width: 100%;
+  width: 50%;
   color: white;
+  margin: 0 auto;
 }
 
 #home {
