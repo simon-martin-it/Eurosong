@@ -23,7 +23,6 @@
 <style lang="scss">
     button {
         margin: 0rem 0rem 1rem 0rem;
-        
     }
     
     #button1 {

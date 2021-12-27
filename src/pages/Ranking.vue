@@ -45,8 +45,27 @@
                 </div>
             </div>
         </div>
-        <div id="list">
-            <p>test</p>
+        <br>
+        <h2>Failures</h2>
+        <div id="failures">
+            <ul id="unordered" style="border-bottom: 2px solid black;">
+                <li class="item">
+                    <p>ID</p>
+                    <p>Artist</p>
+                    <p>Title</p>
+                    <p>Points</p>
+                    <p>spotify</p>
+                </li>
+            </ul>
+            <ul id="unordered" v-for="(song,index) in songs.slice(3)" :key="index">
+                <li class="item">
+                    <p>{{song.id}}</p>
+                    <p>{{song.artist.name}}</p>
+                    <p>{{song.title}}</p>
+                    <p>{{song.totalpoints}} Points</p>
+                    <p><button class="playbutton" @click="GoToSpotify(song.spotify)">Play</button></p>
+                </li>
+            </ul>
         </div>
         <br>
         <button @click="GoToPage('home')">Show Home</button>
@@ -56,24 +75,29 @@
 <script>
     export default {
         name: 'Ranking',
+
         data() {
             return{
                 songs: []
             }
         },
+
         mounted(){
             console.log("mounted ranking");
             this.FetchSongs();
         },
+
         methods: {
             GoToPage(page){
                 this.$emit("change-page", page)
             },
+
             GoToSpotify(url){
                 let base = "https://open.spotify.com/";
                 let rest = url.substring(31);
                 window.open(base + rest, '_blank');
             },
+
             FetchSongs(){
                 const url = "http://webservies.be/eurosong/songs";
                 fetch(url).then((response) => {
@@ -82,6 +106,7 @@
                     this.FetchArtists(songs);
                 })
             },
+
             FetchArtists(songs){
                 const url = "http://webservies.be/eurosong/artists";
                 fetch(url).then((response) => {
@@ -94,6 +119,7 @@
                     this.FetchVotes(songs);
                 })
             },
+
             FetchVotes(songs){
                 const url ="http://webservies.be/eurosong/votes";
                 fetch(url).then((response) => {
@@ -109,6 +135,7 @@
                     });
                 })
             },
+
             CalculateTotalPoints(songid, votes){
                 let p = 0;
                 votes.forEach(vote => {
@@ -130,26 +157,26 @@
         height: 20rem;
         vertical-align: top;
     }
+
     #first {
         margin: 0 1rem 0 1rem;
         border: 5px solid gold;
         color: gold;
     }
+
     #second {
         border: 5px solid silver;
         color:silver;
     }
+
     #third {
         border: 5px solid chocolate;
         color:chocolate;
     }
+
     #playbutton {
         border: 1px solid black;
         text-align: center;
-    }
-
-    .info {
-
     }
 
     .spotify {
@@ -161,5 +188,28 @@
     .playbutton {
         border: 1px solid black;
         margin: 0 auto;
+    }
+
+    #failures {
+        width: 100%;
+        margin-top: 1rem;
+        background-color: white;
+        opacity: 0.9;
+        color:black;
+    }
+    
+    ul {
+        list-style-type: none;
+        width: 100%;
+        padding: 0;
+    }
+
+    li > * {
+        width: 20%;
+        display: inline-block;
+    }
+
+    li > button {
+        width: 7rem;
     }
 </style>
